@@ -41,10 +41,11 @@ pip install nonebot-plugin-zxpix
 nb plugin install nonebot-plugin-zxpix
 ```
 
+## 💿 配置
 | 配置                       | 类型  |          默认值          | 说明                                                                              |
 | :------------------------- | :---: | :----------------------: | --------------------------------------------------------------------------------- |
-| zxpix_api                  |  str  | "http://pix.zhenxun.org" | zhenxun-pix-api地址                                                               |
-| zxpix_image_size           |  str  |         "large"          | ["large", "medium", "original", "square_medium"]图片大小，当使用zxpix_nginx时无效 |
+| zxpix_api                  |  str  | http://pix.zhenxun.org | zhenxun-pix-api地址                                                               |
+| zxpix_image_size           |  str  |         large          | ["large", "medium", "original", "square_medium"]图片大小，当使用zxpix_nginx时无效 |
 | zxpix_timeout              |  int  |            10            | 请求时长                                                                          |
 | zxpix_show_info            | bool  |           true           | 显示图片的uid，pid，标题                                                          |
 | zxpix_allow_group_r18      | bool  |          false           | 允许群组中使用-r参数                                                              |
