@@ -23,7 +23,7 @@ _✨ 基于 [NoneBot2](https://github.com/nonebot/nonebot2) 的一个插件 ✨_
 
 ## 📖 介绍
 
-🎉__这是一个公开的图库API，希望大家一起维护，看看你的xp(bushi__🎉
+🎉 __这是一个公开的图库API，希望大家一起维护，看看你的xp(bushi__ 🎉
 
 [小真寻](https://github.com/HibiKier/zhenxun_bot)会将你的xp分享给其他人！  
 通过提交的 __PID__, __UID__, __关键词__ 来收录图片  
