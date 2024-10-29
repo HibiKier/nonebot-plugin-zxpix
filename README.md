@@ -25,7 +25,7 @@ _✨ 基于 [NoneBot2](https://github.com/nonebot/nonebot2) 的一个插件 ✨_
 
 [小真寻](https://github.com/HibiKier/zhenxun_bot)会将你的xp分享给其他人！  
 通过提交的 __PID__, __UID__, __关键词__ 来收录图片  
-为保证质量, __UID__ 与 __关键词__ 收录只会保存收藏数大于 __240__ 的图片
+为保证质量, __UID__ 与 __关键词__ 收录只会保存收藏数大于 __450__ 的图片
 
 
 > [!NOTE]
