@@ -38,6 +38,8 @@ async def _(
     tags: Query[tuple[str, ...]] = Query("tags", ()),
     num: Query[int] = Query("num", 1),
 ):
+    if num.result > 10:
+        await MessageUtils.build_message("最多一次10张哦...").finish()
     allow_group_r18 = config.zxpix_allow_group_r18
     is_r18 = arparma.find("r18")
     if (
