@@ -1,3 +1,5 @@
+import asyncio
+
 from httpx import HTTPStatusError
 from nonebot import logger
 from nonebot.adapters import Bot
@@ -73,4 +75,5 @@ async def _(
     else:
         for r in result_list:
             await MessageUtils.build_message(r).send()
+    logger.info(f"pix调用 tags: {tags.result}")
     logger.info(f"pix调用 tags: {tags.result}")
