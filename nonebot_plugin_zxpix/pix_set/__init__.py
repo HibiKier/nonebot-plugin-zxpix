@@ -1,17 +1,18 @@
-from nonebot import logger
-from nonebot.rule import Rule
 from httpx import HTTPStatusError
+from nonebot import logger
 from nonebot.adapters import Bot, Event
-from nonebot_plugin_alconna.uniseg.tools import reply_fetch
+from nonebot.rule import Rule
 from nonebot_plugin_alconna import (
-    Args,
-    Reply,
-    Option,
     Alconna,
+    Args,
     Arparma,
+    Option,
+    Reply,
     on_alconna,
     store_true,
 )
+from nonebot_plugin_alconna.uniseg.tools import reply_fetch
+from nonebot_plugin_apscheduler import scheduler
 
 from .._config import InfoManage
 from ..utils import MessageUtils
@@ -72,7 +73,9 @@ uid: {pix_model.uid}
 nsfw: {pix_model.nsfw_tag}
 tags: {pix_model.tags}""".strip()
         await MessageUtils.build_message(result).finish(reply_to=True)
-    await MessageUtils.build_message("没有找到该图片相关信息...").finish(reply_to=True)
+    await MessageUtils.build_message("没有找到该图片相关信息或数据已过期...").finish(
+        reply_to=True
+    )
 
 
 @_block_matcher.handle()
@@ -87,7 +90,9 @@ async def _(bot: Bot, event: Event, arparma: Arparma):
                 f"pix图库API出错啦！ code: {e.response.status_code}"
             ).finish()
         await MessageUtils.build_message(result).finish(reply_to=True)
-    await MessageUtils.build_message("没有找到该图片相关信息...").finish(reply_to=True)
+    await MessageUtils.build_message("没有找到该图片相关信息或数据已过期...").finish(
+        reply_to=True
+    )
 
 
 @_nsfw_matcher.handle()
@@ -106,4 +111,15 @@ async def _(bot: Bot, event: Event, n: int):
                 f"pix图库API出错啦！ code: {e.response.status_code}"
             ).finish()
         await MessageUtils.build_message(result).finish(reply_to=True)
-    await MessageUtils.build_message("没有找到该图片相关信息...").finish(reply_to=True)
+    await MessageUtils.build_message("没有找到该图片相关信息或数据已过期...").finish(
+        reply_to=True
+    )
+
+
+@scheduler.scheduled_job(
+    "interval",
+    minutes=5,
+)
+async def _():
+    InfoManage.remove()
+    logger.debug("自动移除过期图片数据...")
