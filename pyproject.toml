@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nonebot-plugin-zxpix"
-version = "0.1.2"
+version = "0.1.3"
 description = "真寻PIX图库"
 authors = ["HibiKier <775757368@qq.com>"]
 license = "AGPL3.0"
