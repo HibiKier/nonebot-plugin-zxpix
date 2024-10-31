@@ -83,7 +83,7 @@ async def _(bot: Bot, event: Event, arparma: Arparma):
     reply: Reply | None = await reply_fetch(event, bot)
     if reply and (pix_model := InfoManage.get(str(reply.id))):
         try:
-            result = await PixManage.block_pix(pix_model, arparma.find("u"))
+            result = await PixManage.block_pix(pix_model, arparma.find("uid"))
         except HTTPStatusError as e:
             logger.error(f"pix图库API出错 code: {e.response.status_code}...")
             await MessageUtils.build_message(
