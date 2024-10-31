@@ -60,10 +60,12 @@ class PixManage:
         """
         url = pix.url
         if is_original and config.zxpix_nginx:
+            image_type = url.split(".")[-1]
             if pix.is_multiple:
-                url = f"https://{config.zxpix_nginx}/{pix.pid}-{int(pix.img_p) + 1}.png"
+                url = f"https://{config.zxpix_nginx}/"
+                f"{pix.pid}-{int(pix.img_p) + 1}.{image_type}"
             else:
-                url = f"https://{config.zxpix_nginx}/{pix.pid}.png"
+                url = f"https://{config.zxpix_nginx}/{pix.pid}.{image_type}"
         elif config.zxpix_small_nginx:
             if "img-master" in url:
                 url = "img-master" + url.split("img-master")[-1]
