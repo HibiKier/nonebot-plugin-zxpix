@@ -13,8 +13,10 @@ from nonebot_plugin_alconna import (
     on_alconna,
     store_true,
 )
+from nonebot_plugin_alconna.uniseg import Receipt
 from nonebot_plugin_uninfo import Uninfo
 
+from .._config import InfoManage
 from ..utils import MessageUtils
 from .data_source import PixManage, config
 
@@ -70,10 +72,14 @@ async def _(
         and session.group
     ):
         await MessageUtils.alc_forward_msg(
-            result_list, session.user.id, BotConfig.self_nickname
+            [r[0] for r in result_list],
+            session.user.id,
+            next(iter(bot.config.nickname)),
         ).send()
     else:
-        for r in result_list:
-            await MessageUtils.build_message(r).send()
+        for r, pix in result_list:
+            receipt: Receipt = await MessageUtils.build_message(r).send()
+            msg_id = receipt.msg_ids[0]["message_id"]
+            InfoManage.add(str(msg_id), pix)
     logger.info(f"pix调用 tags: {tags.result}")
     logger.info(f"pix调用 tags: {tags.result}")

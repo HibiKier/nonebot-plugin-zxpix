@@ -18,14 +18,20 @@ __plugin_meta__ = PluginMetadata(
 
     pix图库 ?[tags](使用空格分隔): 查看pix图库数量
 
-    pix添加 ['u', 'p', 'k'] [content]
+    pix添加 ['u', 'p'] [content]
             u: uid
             p: pid
             k: 关键词
         示例:
             pix添加 u 123456789
             pix添加 p 123456789
-            pix添加 k 真寻
+
+    引用 /info : 引用图片查看图片信息
+    引用 /block ?[-u]: 提交图片block请求，存在-u时将block该uid下所有图片
+    引用 /nsfw n: 设置图片nsfw，n在[0, 1, 2]之间
+        0: 普通
+        1: 色图
+        2: r18
     """,
     type="application",
     config=PluginConfig,
@@ -37,6 +43,7 @@ __plugin_meta__ = PluginMetadata(
 )
 
 from .pix import *  # noqa: F403
-from .token import *  # noqa: F403
 from .pix_info import *  # noqa: F403
 from .pix_keyword import *  # noqa: F403
+from .pix_set import *  # noqa: F403
+from .token import *  # noqa: F403

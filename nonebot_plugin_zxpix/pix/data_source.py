@@ -1,12 +1,11 @@
 import random
 from pathlib import Path
 
-from nonebot import logger
 import nonebot_plugin_localstore as store
+from nonebot import logger
 
-from .config import PixModel
+from .._config import PixModel, PixResult, config, token
 from ..utils import AsyncHttpx
-from .._config import PixResult, token, config
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6;"
@@ -74,7 +73,7 @@ class PixManage:
         )
 
     @classmethod
-    async def get_pix_result(cls, pix: PixModel) -> list:
+    async def get_pix_result(cls, pix: PixModel) -> tuple[list, PixModel]:
         """构建返回消息
 
         参数:
@@ -83,15 +82,14 @@ class PixManage:
         返回:
             list: 返回消息
         """
-        if image := await cls.get_image(pix):
-            message_list = []
-            if config.zxpix_show_info:
-                message_list.append(
-                    f"title: {pix.title}\n"
-                    f"author: {pix.author}\n"
-                    f"PID: {pix.pid}\nUID: {pix.uid}\n",
-                )
-            message_list.append(image)
-            return message_list
-        else:
-            return ["获取图片失败..."]
+        if not (image := await cls.get_image(pix)):
+            return [f"获取图片 pid: {pix.pid} 失败..."], pix
+        message_list = []
+        if config.zxpix_show_info:
+            message_list.append(
+                f"title: {pix.title}\n"
+                f"author: {pix.author}\n"
+                f"pid: {pix.pid}\nuid: {pix.uid}\n",
+            )
+        message_list.append(image)
+        return message_list, pix

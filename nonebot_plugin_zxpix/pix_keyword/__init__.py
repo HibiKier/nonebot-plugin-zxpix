@@ -1,7 +1,7 @@
-from nonebot import logger
 from httpx import HTTPStatusError
+from nonebot import logger
+from nonebot_plugin_alconna import Alconna, Args, Arparma, on_alconna
 from nonebot_plugin_uninfo import Uninfo
-from nonebot_plugin_alconna import Args, Alconna, Arparma, on_alconna
 
 from .._enum import KwType
 from ..utils import MessageUtils
@@ -10,7 +10,7 @@ from .data_source import KeywordManage
 _add_matcher = on_alconna(
     Alconna(
         "pix添加",
-        Args["add_type", ["u", "p", "k"]]["content", str],
+        Args["add_type", ["u", "p"]]["content", str],
     ),
     priority=5,
     block=True,

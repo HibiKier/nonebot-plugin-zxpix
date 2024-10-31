@@ -25,13 +25,13 @@ _✨ 基于 [NoneBot2](https://github.com/nonebot/nonebot2) 的一个插件 ✨_
 
 <div align="center">
 
-🎉 __这是一个公开的图库API，希望大家一起维护，看看你的xp(bushi__ 🎉
+🎉 __这是一个公开的图库API，希望大家共同维护，看看你的xp(bushi__ 🎉
 
 </div>
 
 [小真寻](https://github.com/HibiKier/zhenxun_bot)会将你的xp分享给其他人！  
-通过提交的 __PID__, __UID__, __关键词__ 来收录图片  
-为保证质量, __UID__ 与 __关键词__ 收录只会保存收藏数大于 __450__ 的图片
+通过提交的 __PID__， __UID__， ~~__关键词__~~ 来收录图片  
+为保证质量， __UID__ 收录只会保存收藏数大于 __450__ 的图片
 
 
 > [!NOTE]
@@ -44,7 +44,7 @@ _✨ 基于 [NoneBot2](https://github.com/nonebot/nonebot2) 的一个插件 ✨_
 
 <div align="center">
 
-![stat](http://pix.zhenxun.org/pix/stat)
+![stat](http://pix.zhenxun.org/pix/stat?t=1)
 
 <div>
 
@@ -83,15 +83,21 @@ pix ?*[tags] ?[-n 1]: 通过 tag 获取相似图片，不含tag时随机抽取,
 
 pix图库 ?[tags](使用空格分隔): 查看pix图库数量
 
-pix添加 ['u', 'p', 'k'] [content]
+pix添加 ['u', 'p'] [content]
         u: uid
         p: pid
-        k: 关键词
     强烈强烈推荐使用 u(uid) 的方式保证质量
     示例:
         pix添加 u 123456789
         pix添加 p 123456789
-        pix添加 k 真寻
+
+引用 /info : 引用图片查看图片信息
+引用 /block ?[-u]: 提交图片block请求，存在-u时将block该uid下所有图片
+引用 /nsfw n: 设置图片nsfw，n在[0, 1, 2]之间
+    0: 普通
+    1: 色图
+    2: r18
+
 ```
 
 ## ❤ 感谢
