@@ -48,21 +48,28 @@ class PixManage:
         return PixResult[list[PixModel]](**res_data)
 
     @classmethod
-    async def get_image(cls, pix: PixModel) -> Path | None:
+    async def get_image(cls, pix: PixModel, is_original: bool = False) -> Path | None:
         """获取图片
 
         参数:
             pix: PixGallery
+            is_original: 是否下载原图
 
         返回:
             Path | None: 图片路径
         """
         url = pix.url
-        if config.zxpix_nginx:
+        if is_original and config.zxpix_nginx:
             if pix.is_multiple:
                 url = f"https://{config.zxpix_nginx}/{pix.pid}-{int(pix.img_p) + 1}.png"
             else:
                 url = f"https://{config.zxpix_nginx}/{pix.pid}.png"
+        elif config.zxpix_small_nginx:
+            if "img-master" in url:
+                url = "img-master" + url.split("img-master")[-1]
+            elif "img-original" in url:
+                url = "img-original" + url.split("img-original")[-1]
+            url = f"https://{config.zxpix_small_nginx}/{url}"
         file = TEMP_PATH / f"pix_{pix.pid}_{random.randint(1, 1000)}.png"
         return (
             file

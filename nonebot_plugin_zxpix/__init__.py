@@ -27,6 +27,7 @@ __plugin_meta__ = PluginMetadata(
             pix添加 u 123456789
             pix添加 p 123456789
 
+    引用 /original : 获取原图
     引用 /info : 引用图片查看图片信息
     引用 /block ?[-u]: 提交图片block请求，存在-u时将block该uid下所有图片
     引用 /nsfw n: 设置图片nsfw，n在[0, 1, 2]之间

@@ -23,6 +23,8 @@ class PluginConfig(BaseModel):
     """多于该数量的图片时使用转发消息，0为不使用"""
     zxpix_nginx: str | None = "pixiv.re"
     """反代"""
+    zxpix_small_nginx: str | None = "i.suimoe.com"
+    """缩略图反代"""
     zxpix_image_to_bytes: bool = False
     """是否将图片转换为bytes"""
 

@@ -46,7 +46,7 @@ _✨ 基于 [NoneBot2](https://github.com/nonebot/nonebot2) 的一个插件 ✨_
 
 <div align="center">
 
-![stat](http://pix.zhenxun.org/pix/stat?t=3)
+![stat](http://pix.zhenxun.org/pix/stat?t=4)
 
 </div>
 
@@ -70,7 +70,8 @@ nb plugin install nonebot-plugin-zxpix
 | zxpix_allow_group_r18      | bool  |          false           | 允许群组中使用-r参数                                                              |
 | zxpix_system_proxy         |  str  |           None           | 系统代理                                                                          |
 | zxpix_max_once_num2forward |  int  |            0             | 多于该数量的图片时使用转发消息，0为不使用                                         |
-| zxpix_nginx                |  str  |         pixiv.re         | 反代地址                                                                          |
+| zxpix_nginx                |  str  |         pixiv.re         | 反代地址                                                                     |
+| zxpix_small_nginx                |  str  |         i.suimoe.com         | 缩略图反代地址                                                                        |
 | zxpix_image_to_bytes       | bool  |          false           | 是否将图片转换为bytes发送                                                         |
 
 ## 🎁 使用
@@ -95,6 +96,7 @@ pix添加 ['u', 'p'] [content]
 
 以下block与nsfw设置仅仅提交一个请求，需要图库管理员审核
 
+引用 /original : 下载原图
 引用 /info : 引用图片查看图片信息
 引用 /block ?[-u]: 提交图片block请求，存在-u时将block该uid下所有图片
 引用 /nsfw n: 设置图片nsfw，n在[0, 1, 2]之间
