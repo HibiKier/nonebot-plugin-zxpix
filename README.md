@@ -10,6 +10,8 @@
   <img src="https://raw.githubusercontent.com/lgc-NB2Dev/readme/main/template/plugin.svg" alt="NoneBotPluginText">
 </p>
 
+</div>
+
 # nonebot-plugin-zxpix
 
 _✨ 基于 [NoneBot2](https://github.com/nonebot/nonebot2) 的一个插件 ✨_
