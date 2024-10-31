@@ -44,7 +44,7 @@ _✨ 基于 [NoneBot2](https://github.com/nonebot/nonebot2) 的一个插件 ✨_
 
 <div align="center">
 
-![stat](http://pix.zhenxun.org/pix/stat?t=1)
+![stat](http://pix.zhenxun.org/pix/stat?t=2)
 
 <div>
 
@@ -90,6 +90,8 @@ pix添加 ['u', 'p'] [content]
     示例:
         pix添加 u 123456789
         pix添加 p 123456789
+
+以下block与nsfw设置仅仅提交一个请求，需要图库管理员审核
 
 引用 /info : 引用图片查看图片信息
 引用 /block ?[-u]: 提交图片block请求，存在-u时将block该uid下所有图片
