@@ -46,7 +46,7 @@ _✨ 基于 [NoneBot2](https://github.com/nonebot/nonebot2) 的一个插件 ✨_
 
 <div align="center">
 
-![stat](http://pix.zhenxun.org/pix/stat?t=4)
+![stat](http://pix.zhenxun.org/pix/stat?t=5)
 
 </div>
 
@@ -89,7 +89,7 @@ pix图库 ?[tags](使用空格分隔): 查看pix图库数量
 pix添加 ['u', 'p'] [content]
         u: uid
         p: pid
-    强烈强烈推荐使用 u(uid) 的方式保证质量
+
     示例:
         pix添加 u 123456789
         pix添加 p 123456789
@@ -104,6 +104,10 @@ pix添加 ['u', 'p'] [content]
     1: 色图
     2: r18
 
+引用消息 /star     : 收藏图片
+引用消息 /unatar   : 取消收藏图片
+pix收藏           : 查看个人收藏
+pix排行 ?[10] -r: 查看收藏排行, 默认获取前10，包含-r时会获取包括r18在内的排行
 ```
 
 ## ❤ 感谢

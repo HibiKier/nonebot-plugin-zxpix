@@ -34,6 +34,11 @@ __plugin_meta__ = PluginMetadata(
         0: 普通
         1: 色图
         2: r18
+        
+    引用消息 /star     : 收藏图片
+    引用消息 /unatar   : 取消收藏图片
+    pix收藏           : 查看个人收藏
+    pix排行 ?[10] -r: 查看收藏排行, 默认获取前10，包含-r时会获取包括r18在内的排行
     """,
     type="application",
     config=PluginConfig,

@@ -2,23 +2,45 @@ from io import BytesIO
 from pathlib import Path
 from typing import Any, ClassVar
 
-import httpx
 import aiofiles
+import httpx
+from httpx import ConnectTimeout, HTTPStatusError, Response
 from nonebot import logger
-from httpx import Response, ConnectTimeout, HTTPStatusError
+from nonebot.adapters import Bot
 from nonebot_plugin_alconna import (
     At,
-    Text,
     AtAll,
+    CustomNode,
     Image,
+    Reference,
+    Text,
+    UniMessage,
     Video,
     Voice,
-    Reference,
-    CustomNode,
-    UniMessage,
 )
+from nonebot_plugin_uninfo import Uninfo, get_interface
 
 from ._config import config
+
+
+def get_platform(t: Bot | Uninfo) -> str:
+    """获取平台
+
+    参数:
+        bot: Bot
+
+    返回:
+        str | None: 平台
+    """
+    if isinstance(t, Bot):
+        if interface := get_interface(t):
+            info = interface.basic_info()
+            platform = info["scope"].lower()
+            return "qq" if platform.startswith("qq") else platform
+    else:
+        platform = t.basic["scope"].lower()
+        return "qq" if platform.startswith("qq") else platform
+    return "unknown"
 
 
 class AsyncHttpx:
@@ -26,6 +48,45 @@ class AsyncHttpx:
         "http://": config.zxpix_system_proxy,
         "https://": config.zxpix_system_proxy,
     }
+
+    @classmethod
+    async def get(
+        cls,
+        url: str,
+        *,
+        params: dict[str, Any] | None = None,
+        headers: dict[str, str] | None = None,
+        cookies: dict[str, str] | None = None,
+        verify: bool = True,
+        use_proxy: bool = True,
+        proxy: dict[str, str] | None = None,
+        timeout: int = 30,
+        **kwargs,
+    ) -> Response:
+        """
+        说明:
+            Post
+
+        参数:
+            url: url
+            params: params
+            headers: 请求头
+            cookies: cookies
+            verify: verify
+            use_proxy: 使用默认代理
+            proxy: 指定代理
+            timeout: 超时时间
+        """
+        _proxy = proxy or (cls.proxy if use_proxy else None)
+        async with httpx.AsyncClient(proxies=_proxy, verify=verify) as client:  # type: ignore
+            return await client.get(
+                url,
+                params=params,
+                headers=headers,
+                cookies=cookies,
+                timeout=timeout,
+                **kwargs,
+            )
 
     @classmethod
     async def post(
