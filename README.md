@@ -46,7 +46,7 @@ _✨ 基于 [NoneBot2](https://github.com/nonebot/nonebot2) 的一个插件 ✨_
 
 <div align="center">
 
-![stat](http://pix.zhenxun.org/pix/stat?t=5)
+![stat](http://pix.zhenxun.org/pix/stat?t=6)
 
 </div>
 
@@ -83,6 +83,7 @@ pix ?*[tags] ?[-n 1]: 通过 tag 获取相似图片，不含tag时随机抽取,
             -n表示数量, -r表示查看r18, -noai表示过滤ai
     示例：pix 萝莉 白丝
     示例：pix 萝莉 白丝 -n 10  （10为数量）
+    示例：pix 13929393-1   查看pid为13929393的第1张的图片（多图时）
 
 pix图库 ?[tags](使用空格分隔): 查看pix图库数量
 
