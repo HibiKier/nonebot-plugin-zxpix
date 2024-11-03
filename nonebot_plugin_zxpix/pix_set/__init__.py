@@ -118,7 +118,7 @@ async def _(bot: Bot, event: Event, n: int):
 
 @scheduler.scheduled_job(
     "interval",
-    minutes=5,
+    minutes=30,
 )
 async def _():
     InfoManage.remove()

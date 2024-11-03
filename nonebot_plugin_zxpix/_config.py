@@ -132,5 +132,5 @@ class InfoManage:
         now = time.time()
         key_list = list(cls.data.keys())
         for key in key_list:
-            if now - cls.data[key].time > 60 * 5:
+            if now - cls.data[key].time > 60 * 60 * 3:
                 cls.data.pop(key)
