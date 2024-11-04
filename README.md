@@ -10,7 +10,6 @@
   <img src="https://raw.githubusercontent.com/lgc-NB2Dev/readme/main/template/plugin.svg" alt="NoneBotPluginText">
 </p>
 
-</div>
 
 # nonebot-plugin-zxpix
 
