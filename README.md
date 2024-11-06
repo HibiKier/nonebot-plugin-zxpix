@@ -78,11 +78,12 @@ nb plugin install nonebot-plugin-zxpix
 
 ```python
 
-pix ?*[tags] ?[-n 1]: 通过 tag 获取相似图片，不含tag时随机抽取,
+pix ?*[tags] ?[-n 1]: 通过 tag 获取相似图片，不含tag时随机抽取, tag也可以是uid和pid
             -n表示数量, -r表示查看r18, -noai表示过滤ai
     示例：pix 萝莉 白丝
     示例：pix 萝莉 白丝 -n 10  （10为数量）
     示例：pix 13929393-1   查看pid为13929393的第1张的图片（多图时）
+    示例：pix 121323322    查看uid或pid为121323322的图片
 
 pix图库 ?[tags](使用空格分隔): 查看pix图库数量
 
