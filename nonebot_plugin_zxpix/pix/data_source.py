@@ -59,7 +59,7 @@ class PixManage:
             Path | None: 图片路径
         """
         url = pix.url
-        if is_original and config.zxpix_nginx:
+        if "limit_sanity_level" in url or (is_original and config.zxpix_nginx):
             image_type = url.split(".")[-1]
             if pix.is_multiple:
                 url = f"https://{config.zxpix_nginx}/"
