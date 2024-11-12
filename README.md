@@ -45,7 +45,7 @@ _✨ 基于 [NoneBot2](https://github.com/nonebot/nonebot2) 的一个插件 ✨_
 
 <div align="center">
 
-![stat](http://pix.zhenxun.org/pix/stat?t=10)
+![stat](http://pix.zhenxun.org/pix/stat?t=11)
 
 </div>
 
@@ -63,7 +63,7 @@ nb plugin install nonebot-plugin-zxpix
 | 配置                       | 类型  |          默认值          | 说明                                                                              |
 | :------------------------- | :---: | :----------------------: | --------------------------------------------------------------------------------- |
 | zxpix_api                  |  str  | http://pix.zhenxun.org | zhenxun-pix-api地址                                                               |
-| zxpix_image_size           |  str  |         large          | ["large", "medium", "original", "square_medium"]图片大小，当使用zxpix_nginx时无效 |
+| zxpix_image_size           |  str  |         large          | ["large", "medium", "original", "square_medium"]图片大小 |
 | zxpix_timeout              |  int  |            10            | 请求时长                                                                          |
 | zxpix_show_info            | bool  |           true           | 显示图片的uid，pid，标题                                                          |
 | zxpix_allow_group_r18      | bool  |          false           | 允许群组中使用-r参数                                                              |
@@ -78,21 +78,21 @@ nb plugin install nonebot-plugin-zxpix
 
 ```python
 
-pix ?*[tags] ?[-n 1]: 通过 tag 获取相似图片，不含tag时随机抽取, tag也可以是uid和pid
+pix ?*[tags] ?[-n 1]: 通过 tag 获取相似图片，不含tag时随机抽取, tag也可以是uid和pid和作者名称
             -n表示数量, -r表示查看r18, -noai表示过滤ai
     示例：pix 萝莉 白丝
     示例：pix 萝莉 白丝 -n 10  （10为数量）
-    示例：pix 13929393-1   查看pid为13929393的第1张的图片（多图时）
+    示例：pix 13929393-0   查看pid为13929393的第1张的图片（多图时）
     示例：pix 121323322    查看uid或pid为121323322的图片
 
 pix图库 ?[tags](使用空格分隔): 查看pix图库数量
 
-pix添加 ['u', 'p'] [content]
+pix添加 ['u', 'p'] [*content]
         u: uid
         p: pid
 
     示例:
-        pix添加 u 123456789
+        pix添加 u 123456789 12312333 ...
         pix添加 p 123456789
 
 以下block与nsfw设置仅仅提交一个请求，需要图库管理员审核
