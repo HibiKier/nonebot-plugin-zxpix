@@ -12,7 +12,8 @@ __plugin_meta__ = PluginMetadata(
     name="Pix图库",
     description="小真寻的pix图库",
     usage="""
-    pix ?*[tags] ?[-n 1]: 通过 tag 获取相似图片，不含tag时随机抽取,
+    pix ?*[tags] ?[-n 1]: 通过 tag 获取相似图片，不含tag时随机抽取
+                tag可以是tag，uid，pid，作者名称等
                 -n表示数量, -r表示查看r18, -noai表示过滤ai
         示例：pix 萝莉 白丝
         示例：pix 萝莉 白丝 -n 10  （10为数量）
@@ -29,12 +30,14 @@ __plugin_meta__ = PluginMetadata(
 
     引用 /original : 获取原图
     引用 /info : 引用图片查看图片信息
+    引用 /block ?[level] ?[--all]   : block该pid
+            默认level为2，可选[1, 2], 1程度较轻，含有all时block该pid下所有图片
     引用 /block ?[-u]: 提交图片block请求，存在-u时将block该uid下所有图片
     引用 /nsfw n: 设置图片nsfw，n在[0, 1, 2]之间
         0: 普通
         1: 色图
         2: r18
-        
+
     引用消息 /star     : 收藏图片
     引用消息 /unatar   : 取消收藏图片
     pix收藏           : 查看个人收藏

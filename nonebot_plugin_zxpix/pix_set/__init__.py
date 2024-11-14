@@ -7,6 +7,7 @@ from nonebot_plugin_alconna import (
     Args,
     Arparma,
     Option,
+    Query,
     Reply,
     on_alconna,
     store_true,
@@ -45,7 +46,11 @@ _info_matcher = on_alconna(
 
 _block_matcher = on_alconna(
     Alconna(
-        ["/"], "block", Option("-u|--uid", action=store_true, help_text="是否是uid")
+        ["/"],
+        "block",
+        Args["level?", [1, 2]],
+        Option("-u|--uid", action=store_true, help_text="是否是uid"),
+        Option("--all", action=store_true, help_text="全部"),
     ),
     priority=5,
     block=True,
@@ -79,11 +84,15 @@ tags: {pix_model.tags}""".strip()
 
 
 @_block_matcher.handle()
-async def _(bot: Bot, event: Event, arparma: Arparma):
+async def _(
+    bot: Bot, event: Event, arparma: Arparma, level: Query[int] = Query("level", 2)
+):
     reply: Reply | None = await reply_fetch(event, bot)
     if reply and (pix_model := InfoManage.get(str(reply.id))):
         try:
-            result = await PixManage.block_pix(pix_model, arparma.find("uid"))
+            result = await PixManage.block_pix(
+                pix_model, level.result, arparma.find("uid"), arparma.find("all")
+            )
         except HTTPStatusError as e:
             logger.error(f"pix图库API出错 code: {e.response.status_code}...")
             await MessageUtils.build_message(
@@ -118,7 +127,7 @@ async def _(bot: Bot, event: Event, n: int):
 
 @scheduler.scheduled_job(
     "interval",
-    minutes=30,
+    hours=6,
 )
 async def _():
     InfoManage.remove()
