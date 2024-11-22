@@ -85,7 +85,7 @@ class StarManage:
         result = await asyncio.gather(*task_list)
         message_list = []
         for i in range(len(data.data)):
-            pix = data.data[i]
+            pix: PixModel = data.data[i]
             img = result[i] or "这张图片下载失败了..."
             message_list.append(
                 [

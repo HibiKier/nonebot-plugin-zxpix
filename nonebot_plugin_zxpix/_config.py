@@ -90,6 +90,8 @@ class PixModel(BaseModel):
     """多图第n张"""
     tags: str
     """tags"""
+    star: int
+    """点赞数"""
 
 
 class InfoModel(BaseModel):

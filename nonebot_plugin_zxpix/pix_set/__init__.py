@@ -75,8 +75,10 @@ async def _(bot: Bot, event: Event):
 author: {pix_model.author}
 pid: {pix_model.pid}-{pix_model.img_p}
 uid: {pix_model.uid}
+收藏数:{pix_model.total_bookmarks}
 nsfw: {pix_model.nsfw_tag}
-tags: {pix_model.tags}""".strip()
+tags: {pix_model.tags}
+url: {pix_model.url}""".strip()
         await MessageUtils.build_message(result).finish(reply_to=True)
     await MessageUtils.build_message("没有找到该图片相关信息或数据已过期...").finish(
         reply_to=True
