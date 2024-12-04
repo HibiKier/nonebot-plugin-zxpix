@@ -1,6 +1,6 @@
 <div align=center>
 
-<img width="250" height="312" src="https://github.com/HibiKier/nonebot-plugin-zxreport/blob/main/docs_image/tt.jpg"/>
+<img width="250" height="312" src="https://github.com/HibiKier/nonebot-plugin-zxpix/blob/main/docs_image/tt.jpg"/>
 
 </div>
 
@@ -45,7 +45,7 @@ _✨ 基于 [NoneBot2](https://github.com/nonebot/nonebot2) 的一个插件 ✨_
 
 <div align="center">
 
-![stat](http://pix.zhenxun.org/pix/stat?t=15)
+![stat](http://pix.zhenxun.org/pix/stat?t=16)
 
 </div>
 
@@ -114,3 +114,4 @@ pix排行 ?[10] -r: 查看收藏排行, 默认获取前10，包含-r时会获取
 ## ❤ 感谢
 
 - 可爱的小真寻 Bot [`zhenxun_bot`](https://github.com/HibiKier/zhenxun_bot): 我谢我自己，桀桀桀
+- [Ailitonia](https://github.com/Ailitonia): 谢谢你的xp，嘿嘿
