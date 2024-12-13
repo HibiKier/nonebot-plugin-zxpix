@@ -20,6 +20,10 @@ _✨ 基于 [NoneBot2](https://github.com/nonebot/nonebot2) 的一个插件 ✨_
 ![onebot](https://img.shields.io/badge/onebot-v11-black)
 [![license](https://img.shields.io/badge/license-AGPL3.0-FE7D37)](https://github.com/HibiKier/zhenxun_bot/blob/main/LICENSE)
 
+
+[API文档](https://pix.zhenxun.org/)
+
+
 </div>
 
 ## 📖 介绍
@@ -45,7 +49,7 @@ _✨ 基于 [NoneBot2](https://github.com/nonebot/nonebot2) 的一个插件 ✨_
 
 <div align="center">
 
-![stat](http://pix.zhenxun.org/pix/stat?t=16)
+![stat](http://pix.zhenxun.org/pix/stat?t=17)
 
 </div>
 
