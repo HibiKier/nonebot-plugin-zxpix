@@ -98,7 +98,7 @@ async def _(
         ratio_tuple_split = ratio.result.split("，")
     if ratio_tuple_split and len(ratio_tuple_split) < 2:
         return await MessageUtils.build_message("比例格式错误，请输入x,y").finish()
-    if ratio_tuple:
+    if ratio_tuple_split:
         ratio_tuple = [float(ratio_tuple_split[0]), float(ratio_tuple_split[1])]
     if nsfw.result:
         for n in nsfw.result:
