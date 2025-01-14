@@ -26,6 +26,7 @@ class InfoManage:
         return f"""
 总数: {data.count}
 普通: {data.normal}
+涩图: {data.setu}
 R18: {data.r18}
 AI: {data.ai}
     """.strip()

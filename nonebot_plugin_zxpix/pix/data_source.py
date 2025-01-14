@@ -19,7 +19,13 @@ TEMP_PATH = store.get_plugin_cache_dir()
 class PixManage:
     @classmethod
     async def get_pix(
-        cls, tags: tuple[str, ...], num: int, is_r18: bool, ai: bool | None
+        cls,
+        tags: tuple[str, ...],
+        num: int,
+        is_r18: bool,
+        ai: bool | None,
+        nsfw: tuple[int, ...],
+        ratio_tuple: list[float] | None,
     ) -> PixResult[list[PixModel]]:
         """获取图片
 
@@ -37,6 +43,8 @@ class PixManage:
             "r18": is_r18,
             "ai": ai,
             "size": config.zxpix_image_size,
+            "nsfw_tag": nsfw or None,
+            "ratio": ratio_tuple,
         }
         logger.debug(f"尝试调用pix api: {api}, 参数: {json_data}")
         headers = None

@@ -47,6 +47,12 @@ _matcher = on_alconna(
         Option("-n|--num", Args["num", int]),
         Option("-r|--r18", action=store_true, help_text="是否是r18"),
         Option("-noai", action=store_true, help_text="是否是过滤ai"),
+        Option(
+            "--nsfw",
+            Args["nsfw_tag", MultiVar(int)],
+            help_text="nsfw_tag，[0, 1, 2]",
+        ),
+        Option("--ratio", Args["ratio", str], help_text="图片比例，例如: 0.5,1.2"),
     ),
     aliases={"PIX"},
     priority=5,
@@ -69,6 +75,8 @@ async def _(
     arparma: Arparma,
     tags: Query[tuple[str, ...]] = Query("tags", ()),
     num: Query[int] = Query("num", 1),
+    nsfw: Query[tuple[int, ...]] = Query("nsfw_tag", ()),
+    ratio: Query[str] = Query("ratio", ""),
 ):
     if num.result > 10:
         await MessageUtils.build_message("最多一次10张哦...").finish()
@@ -77,13 +85,36 @@ async def _(
     if (
         not allow_group_r18
         and session.group
-        and is_r18
+        and (is_r18 or 2 in nsfw.result)
         and session.user.id not in bot.config.superusers
     ):
         await MessageUtils.build_message("给我滚出克私聊啊变态！").finish()
-    is_ai = arparma.find("noai") or None
+    is_ai = False if arparma.find("noai") else None
+    ratio_tuple = None
+    ratio_tuple_split = []
+    if "," in ratio.result:
+        ratio_tuple_split = ratio.result.split(",")
+    elif "，" in ratio.result:
+        ratio_tuple_split = ratio.result.split("，")
+    if ratio_tuple_split and len(ratio_tuple_split) < 2:
+        return await MessageUtils.build_message("比例格式错误，请输入x,y").finish()
+    if ratio_tuple:
+        ratio_tuple = [float(ratio_tuple_split[0]), float(ratio_tuple_split[1])]
+    if nsfw.result:
+        for n in nsfw.result:
+            if n not in [0, 1, 2]:
+                return await MessageUtils.build_message(
+                    "nsfw_tag格式错误，请输入0,1,2"
+                ).finish()
     try:
-        result = await PixManage.get_pix(tags.result, num.result, is_r18, is_ai)
+        result = await PixManage.get_pix(
+            tags.result,
+            num.result,
+            is_r18,
+            is_ai,
+            nsfw.result,
+            ratio_tuple,
+        )
         if not result.suc:
             await MessageUtils.build_message(result.info).send()
     except HTTPStatusError as e:

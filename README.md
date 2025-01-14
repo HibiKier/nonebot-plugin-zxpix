@@ -49,7 +49,7 @@ _✨ 基于 [NoneBot2](https://github.com/nonebot/nonebot2) 的一个插件 ✨_
 
 <div align="center">
 
-![stat](http://pix.zhenxun.org/pix/stat?t=17)
+![stat](http://pix.zhenxun.org/pix/stat?t=18)
 
 </div>
 
