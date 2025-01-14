@@ -82,8 +82,12 @@ nb plugin install nonebot-plugin-zxpix
 
 ```python
 
-pix ?*[tags] ?[-n 1]: 通过 tag 获取相似图片，不含tag时随机抽取, tag也可以是uid和pid和作者名称
-            -n表示数量, -r表示查看r18, -noai表示过滤ai
+pix ?*[tags] ?[-n 1] ?*[--nsfw [0, 1, 2]] ?[--ratio r1,r2]
+        : 通过 tag 获取相似图片，不含tag时随机抽取,
+        -n表示数量, -r表示查看r18, -noai表示过滤ai
+        --nsfw 表示获取的 nsfw-tag，0: 普通, 1: 色图, 2: R18
+        --ratio 表示获取的图片比例，示例: 0.5,1.5 表示长宽比大于0.5小于1.5
+        
     示例：pix 萝莉 白丝
     示例：pix 萝莉 白丝 -n 10  （10为数量）
     示例：pix 13929393-0   查看pid为13929393的第1张的图片（多图时）
